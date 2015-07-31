@@ -37,7 +37,6 @@ public class ChatAdapter extends BaseAdapter {
         mInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-
     @Override
     public int getCount() {
         return myList.size();

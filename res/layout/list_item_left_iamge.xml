@@ -12,7 +12,6 @@
             android:layout_margin="5dip"
             android:src="@drawable/ic_launcher"
             />
-
     <ImageView
             android:id="@+id/iv_left_image"
             android:layout_width="wrap_content"

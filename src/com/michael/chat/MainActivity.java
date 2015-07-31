@@ -9,12 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * 参考链接：
- * http://android.amberfog.com/?p=296
- * http://www.cnblogs.com/devinzhang/archive/2012/07/02/2573554.html
- * http://stackoverflow.com/questions/4777272/android-listview-with-different-layout-for-each-row
- */
 public class MainActivity extends Activity {
 
     private ListView lvData;
@@ -45,7 +39,7 @@ public class MainActivity extends Activity {
 
         msg = new Message();
         msg.setType(ChatAdapter.VALUE_TIME_TIP);
-        msg.setValue("2012-12-23 下午2:23");
+        msg.setValue("2014-15-23 下午2:23");
         msgList.add(msg);
 
         msg = new Message();
@@ -60,7 +54,7 @@ public class MainActivity extends Activity {
 
         msg = new Message();
         msg.setType(ChatAdapter.VALUE_TIME_TIP);
-        msg.setValue("2012-12-23 下午2:25");
+        msg.setValue("2014-15-23 下午2:25");
         msgList.add(msg);
 
         msg = new Message();
@@ -80,7 +74,7 @@ public class MainActivity extends Activity {
 
         msg = new Message();
         msg.setType(ChatAdapter.VALUE_TIME_TIP);
-        msg.setValue("2012-12-23 下午3:25");
+        msg.setValue("2014-15-23 下午3:25");
         msgList.add(msg);
 
         msg = new Message();

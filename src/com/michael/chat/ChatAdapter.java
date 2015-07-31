@@ -200,7 +200,7 @@ public class ChatAdapter extends BaseAdapter {
 
     /**
      * 根据数据源的position返回需要显示的的layout的type
-     * <p/>
+     * <p/> 朱小辉
      * type的值必须从0开始
      */
     @Override

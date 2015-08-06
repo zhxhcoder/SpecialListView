@@ -21,11 +21,11 @@ import java.util.List;
 public class FlowGroupView extends ViewGroup {
 
     /**
-     * ´¢´æËùÓĞµÄview °´ĞĞ¼ÇÂ¼
+     * å‚¨å­˜æ‰€æœ‰çš„view æŒ‰è¡Œè®°å½•
      */
     private List<List<View>> mAllViews = new ArrayList<List<View>>();
     /**
-     * ¼ÇÂ¼Ã¿Ò»ĞĞµÄ¸ß¶È
+     * è®°å½•æ¯ä¸€è¡Œçš„é«˜åº¦
      */
     private List<Integer> mLineHeight = new ArrayList<Integer>();
     private String TAG = "TAG";
@@ -44,28 +44,28 @@ public class FlowGroupView extends ViewGroup {
     }
 
     /**
-     * ËùÓĞchildViewµÄÎ»ÖÃµÄ²¼¾Ö
+     * æ‰€æœ‰childViewçš„ä½ç½®çš„å¸ƒå±€
      */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        // µ±Ç°ĞĞµÄ×î´ó¸ß¶È
+        // å½“å‰è¡Œçš„æœ€å¤§é«˜åº¦
         int lineHeight = 0;
-        // ´æ´¢Ã¿Ò»ĞĞËùÓĞµÄchildView
+        // å­˜å‚¨æ¯ä¸€è¡Œæ‰€æœ‰çš„childView
         List<View> lineViews = new ArrayList<View>();
         int left = 0;
         int top = 0;
-        // µÃµ½×ÜĞĞÊı
+        // å¾—åˆ°æ€»è¡Œæ•°
         int lineNums = mAllViews.size();
         for (int i = 0; i < lineNums; i++) {
-            // Ã¿Ò»ĞĞµÄËùÓĞµÄviews
+            // æ¯ä¸€è¡Œçš„æ‰€æœ‰çš„views
             lineViews = mAllViews.get(i);
-            // µ±Ç°ĞĞµÄ×î´ó¸ß¶È
+            // å½“å‰è¡Œçš„æœ€å¤§é«˜åº¦
             lineHeight = mLineHeight.get(i);
 
-            Log.e(TAG, "µÚ" + i + "ĞĞ £º" + lineViews.size() + " , " + lineViews);
-            Log.e(TAG, "µÚ" + i + "ĞĞ£¬ £º" + lineHeight);
+            Log.e(TAG, "ç¬¬" + i + "è¡Œ ï¼š" + lineViews.size() + " , " + lineViews);
+            Log.e(TAG, "ç¬¬" + i + "è¡Œï¼Œ ï¼š" + lineHeight);
 
-            // ±éÀúµ±Ç°ĞĞËùÓĞµÄView
+            // éå†å½“å‰è¡Œæ‰€æœ‰çš„View
             for (int j = 0; j < lineViews.size(); j++) {
                 View child = lineViews.get(j);
                 if (child.getVisibility() == View.GONE) {
@@ -74,7 +74,7 @@ public class FlowGroupView extends ViewGroup {
                 MarginLayoutParams lp = (MarginLayoutParams) child
                         .getLayoutParams();
 
-                //¼ÆËãchildViewµÄleft,top,right,bottom
+                //è®¡ç®—childViewçš„left,top,right,bottom
                 int lc = left + lp.leftMargin;
                 int tc = top + lp.topMargin;
                 int rc = lc + child.getMeasuredWidth();
@@ -93,88 +93,88 @@ public class FlowGroupView extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // ÖÃ¿Õ view ÈİÆ÷ ºÍ lineHeight ÈİÆ÷  ÖØĞÂ¸³Öµ
+        // ç½®ç©º view å®¹å™¨ å’Œ lineHeight å®¹å™¨  é‡æ–°èµ‹å€¼
         mAllViews.clear();
         mLineHeight.clear();
 
-        //µÃµ½ÉÏ¼¶ÈİÆ÷ÎªÆäÍÆ¼öµÄ¿í¸ßºÍ¼ÆËãÄ£Ê½
+        //å¾—åˆ°ä¸Šçº§å®¹å™¨ä¸ºå…¶æ¨èçš„å®½é«˜å’Œè®¡ç®—æ¨¡å¼
         int specWidthMode = MeasureSpec.getMode(widthMeasureSpec);
         int specHeighMode = MeasureSpec.getMode(heightMeasureSpec);
         int specWidthSize = MeasureSpec.getSize(widthMeasureSpec);
         int specHeighSize = MeasureSpec.getSize(heightMeasureSpec);
-        // ¼ÆËã³öËùÓĞµÄ child µÄ ¿íºÍ¸ß
+        // è®¡ç®—å‡ºæ‰€æœ‰çš„ child çš„ å®½å’Œé«˜
         measureChildren(specWidthSize, specHeighSize);
-        // ¼ÇÂ¼Èç¹ûÊÇ warp_content ÊÇÉèÖÃµÄ¿íºÍ¸ß
+        // è®°å½•å¦‚æœæ˜¯ warp_content æ˜¯è®¾ç½®çš„å®½å’Œé«˜
         int width = 0;
         int height = 0;
-        // µÃµ½×ÓviewµÄ¸öÊı
+        // å¾—åˆ°å­viewçš„ä¸ªæ•°
         int cCount = getChildCount();
         /**
-         * ¼ÇÂ¼Ã¿Ò»ĞĞµÄ¿í¶È£¬width²»¶ÏÈ¡×î´ó¿í¶È
+         * è®°å½•æ¯ä¸€è¡Œçš„å®½åº¦ï¼Œwidthä¸æ–­å–æœ€å¤§å®½åº¦
          */
         int lineWidth = 0;
         /**
-         * Ã¿Ò»ĞĞµÄ¸ß¶È£¬ÀÛ¼ÓÖÁheight
+         * æ¯ä¸€è¡Œçš„é«˜åº¦ï¼Œç´¯åŠ è‡³height
          */
         int lineHeight = 0;
 
-        // ´æ´¢Ã¿Ò»ĞĞËùÓĞµÄchildView
+        // å­˜å‚¨æ¯ä¸€è¡Œæ‰€æœ‰çš„childView
         List<View> lineViews = new ArrayList<View>();
 
         for (int i = 0; i < cCount; i++) {
-            // µÃµ½Ã¿¸ö×ÓView
+            // å¾—åˆ°æ¯ä¸ªå­View
             View child = getChildAt(i);
-            // ²âÁ¿Ã¿¸ö×ÓViewµÄ¿í¸ß
+            // æµ‹é‡æ¯ä¸ªå­Viewçš„å®½é«˜
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
-            // µ±Ç°×ÓviewµÄlp
+            // å½“å‰å­viewçš„lp
             MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
-            // ×ÓviewµÄ¿íºÍ¸ß
+            // å­viewçš„å®½å’Œé«˜
             int cWidth = 0;
             int cheight = 0;
-            // µ±Ç°×Ó view Êµ¼ÊÕ¼µÄ¿í
+            // å½“å‰å­ view å®é™…å çš„å®½
             cWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
-            // µ±Ç°×ÓView Êµ¼ÊÕ¼µÄ¸ß
+            // å½“å‰å­View å®é™…å çš„é«˜
             cheight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
 
-            // ĞèÒª»»ĞĞ
+            // éœ€è¦æ¢è¡Œ
             if (lineWidth + cWidth > specWidthSize) {
-                width = Math.max(lineWidth, cWidth);// È¡×î´óÖµ
-                lineWidth = cWidth; // ¿ªÆôĞÂĞĞµÄÊ±ºòÖØĞÂÀÛ¼Ówidth
-                height += lineHeight; // ¿ªÆôĞÂĞĞÊ±ÀÛ¼Ó height
-                lineHeight = cheight; // ¼ÇÂ¼ÏÂÒ»ĞĞµÄ¸ß¶È
+                width = Math.max(lineWidth, cWidth);// å–æœ€å¤§å€¼
+                lineWidth = cWidth; // å¼€å¯æ–°è¡Œçš„æ—¶å€™é‡æ–°ç´¯åŠ width
+                height += lineHeight; // å¼€å¯æ–°è¡Œæ—¶ç´¯åŠ  height
+                lineHeight = cheight; // è®°å½•ä¸‹ä¸€è¡Œçš„é«˜åº¦
                 mAllViews.add(lineViews);
                 mLineHeight.add(lineHeight);
                 lineViews = new ArrayList<View>();
-                // »»ĞĞµÄÊ±ºò°Ñ¸Ã view ·Å½ø ¼¯ºÏÀï
-                lineViews.add(child);// Õâ¸ö  view(child) ÊÇÏÂÒ»ĞĞµÄµÚÒ»¸öview
+                // æ¢è¡Œçš„æ—¶å€™æŠŠè¯¥ view æ”¾è¿› é›†åˆé‡Œ
+                lineViews.add(child);// è¿™ä¸ª  view(child) æ˜¯ä¸‹ä¸€è¡Œçš„ç¬¬ä¸€ä¸ªview
                 Log.v(TAG, "onl  mAllViews.size()  --  > " + mAllViews.size());
             } else {
-                // ²»ĞèÒª»»ĞĞ
+                // ä¸éœ€è¦æ¢è¡Œ
                 lineWidth += cWidth;//
-                height = Math.max(lineHeight, cheight);// È¡×î´óÖµ
-                // ²»ĞèÒª»»ĞĞÊ± °Ñ×ÓView add ½ø¼¯ºÏ
+                height = Math.max(lineHeight, cheight);// å–æœ€å¤§å€¼
+                // ä¸éœ€è¦æ¢è¡Œæ—¶ æŠŠå­View add è¿›é›†åˆ
                 lineViews.add(child);
             }
 
             if (i == cCount - 1) {
-                // Èç¹ûÊÇ×îºóÒ»¸öview
+                // å¦‚æœæ˜¯æœ€åä¸€ä¸ªview
                 width = Math.max(lineWidth, cWidth);
                 height += lineHeight;
             }
         }
-        // Ñ­»·½áÊøºó °Ñ×îºóÒ»ĞĞÄÚÈİadd½ø¼¯ºÏÖĞ
-        mLineHeight.add(lineHeight); // ¼ÇÂ¼×îºóÒ»ĞĞ
+        // å¾ªç¯ç»“æŸå æŠŠæœ€åä¸€è¡Œå†…å®¹addè¿›é›†åˆä¸­
+        mLineHeight.add(lineHeight); // è®°å½•æœ€åä¸€è¡Œ
         mAllViews.add(lineViews);
-        // MeasureSpec.EXACTLY ±íÊ¾ÉèÖÃÁË¾«È·µÄÖµ
-        // Èç¹û mode ÊÇ MeasureSpec.EXACTLY Ê±ºò£¬Ôò²»ÊÇ warp_content ÓÃ¼ÆËãÀ´µÄÖµ£¬·ñÔòÔòÓÃÉÏ¼¶²¼¾Ö·Ö¸øËüµÄÖµ
+        // MeasureSpec.EXACTLY è¡¨ç¤ºè®¾ç½®äº†ç²¾ç¡®çš„å€¼
+        // å¦‚æœ mode æ˜¯ MeasureSpec.EXACTLY æ—¶å€™ï¼Œåˆ™ä¸æ˜¯ warp_content ç”¨è®¡ç®—æ¥çš„å€¼ï¼Œå¦åˆ™åˆ™ç”¨ä¸Šçº§å¸ƒå±€åˆ†ç»™å®ƒçš„å€¼
         setMeasuredDimension(specWidthMode == MeasureSpec.EXACTLY ? specWidthSize : width
                 , specHeighMode == MeasureSpec.EXACTLY ? specHeighSize : height);
         Log.v(TAG, "onLayout  onMeasure   mAllViews.size() -- > " + mAllViews.size() + "   mLineHeight.size() -- > " + mLineHeight.size());
     }
 
     /**
-     * Õâ¸öÒ»¶¨ÒªÉèÖÃ£¬·ñÔò»á°üÇ¿×ª´íÎó
-     * ÉèÖÃËüÖ§³Ö marginLayoutParams
+     * è¿™ä¸ªä¸€å®šè¦è®¾ç½®ï¼Œå¦åˆ™ä¼šåŒ…å¼ºè½¬é”™è¯¯
+     * è®¾ç½®å®ƒæ”¯æŒ marginLayoutParams
      */
     @Override
     public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {

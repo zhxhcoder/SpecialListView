@@ -41,7 +41,7 @@ public class FeedMainActivity extends Activity {
     }
 
     /**
-     * ¶¯Ì¬Ìí¼Ó²¼¾Ö
+     * åŠ¨æ€æ·»åŠ å¸ƒå±€
      *
      * @param str
      */
@@ -56,7 +56,7 @@ public class FeedMainActivity extends Activity {
         child.setTextColor(Color.WHITE);
         initEvents(child);
         view.addView(child);
-        // Îñ±ØÒª¼ÓÕâ¾ä
+        // åŠ¡å¿…è¦åŠ è¿™å¥
         view.requestLayout();
     }
 
@@ -74,7 +74,7 @@ public class FeedMainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            // ¶¯Ì¬Ìí¼Ó view
+            // åŠ¨æ€æ·»åŠ  view
             addTextView(names.get((int) (Math.random() * names.size())));
 
             return true;
@@ -83,7 +83,7 @@ public class FeedMainActivity extends Activity {
     }
 
     /**
-     * ÎªÃ¿¸öview Ìí¼Óµã»÷ÊÂ¼ş
+     * ä¸ºæ¯ä¸ªview æ·»åŠ ç‚¹å‡»äº‹ä»¶
      *
      * @param tv
      */
@@ -99,14 +99,14 @@ public class FeedMainActivity extends Activity {
     }
 
     private void setData() {
-        names.add("Ò»");
-        names.add("¶ş¶ş");
-        names.add("ÈıÈıÈı");
-        names.add("ËÄËÄËÄËÄ");
-        names.add("ÎåÎåÎåÎåÎå");
-        names.add("¶ş¶ş");
-        names.add("ÈıÈıÈı");
-        names.add("Ò»");
+        names.add("ä¸€");
+        names.add("äºŒäºŒ");
+        names.add("ä¸‰ä¸‰ä¸‰");
+        names.add("å››å››å››å››");
+        names.add("äº”äº”äº”äº”äº”");
+        names.add("äºŒäºŒ");
+        names.add("ä¸‰ä¸‰ä¸‰");
+        names.add("ä¸€");
 
     }
 }

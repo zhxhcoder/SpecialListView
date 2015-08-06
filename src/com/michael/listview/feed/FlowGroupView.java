@@ -28,7 +28,7 @@ public class FlowGroupView extends ViewGroup {
      * 记录每一行的高度
      */
     private List<Integer> mLineHeight = new ArrayList<Integer>();
-    private String TAG = "TAG";
+    private String TAG = "FlowGroupView";
 
     public FlowGroupView(Context context, AttributeSet attrs,
                          int defStyleAttr) {

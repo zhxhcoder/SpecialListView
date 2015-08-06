@@ -9,14 +9,14 @@ package com.michael.listview.feed;
  * To change this template use File | Settings | File and Code Templates.
  */
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FlowGroupView extends ViewGroup {
 
@@ -56,22 +56,19 @@ public class FlowGroupView extends ViewGroup {
         int top = 0;
         // 得到总行数
         int lineNums = mAllViews.size();
-        for (int i = 0; i < lineNums; i++)
-        {
+        for (int i = 0; i < lineNums; i++) {
             // 每一行的所有的views
             lineViews = mAllViews.get(i);
             // 当前行的最大高度
             lineHeight = mLineHeight.get(i);
 
-            Log.e(TAG , "第" + i + "行 ：" + lineViews.size() + " , " + lineViews);
+            Log.e(TAG, "第" + i + "行 ：" + lineViews.size() + " , " + lineViews);
             Log.e(TAG, "第" + i + "行， ：" + lineHeight);
 
             // 遍历当前行所有的View
-            for (int j = 0; j < lineViews.size(); j++)
-            {
+            for (int j = 0; j < lineViews.size(); j++) {
                 View child = lineViews.get(j);
-                if (child.getVisibility() == View.GONE)
-                {
+                if (child.getVisibility() == View.GONE) {
                     continue;
                 }
                 MarginLayoutParams lp = (MarginLayoutParams) child
@@ -80,7 +77,7 @@ public class FlowGroupView extends ViewGroup {
                 //计算childView的left,top,right,bottom
                 int lc = left + lp.leftMargin;
                 int tc = top + lp.topMargin;
-                int rc =lc + child.getMeasuredWidth();
+                int rc = lc + child.getMeasuredWidth();
                 int bc = tc + child.getMeasuredHeight();
 
                 child.layout(lc, tc, rc, bc);
@@ -91,7 +88,7 @@ public class FlowGroupView extends ViewGroup {
             left = 0;
             top += lineHeight;
         }
-        Log.v(TAG, "onLayout   mAllViews.size() -- > " + mAllViews.size() + "   mLineHeight.size() -- > "+ mLineHeight.size());
+        Log.v(TAG, "onLayout   mAllViews.size() -- > " + mAllViews.size() + "   mLineHeight.size() -- > " + mLineHeight.size());
     }
 
     @Override
@@ -140,7 +137,7 @@ public class FlowGroupView extends ViewGroup {
             cheight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
 
             // 需要换行
-            if(lineWidth + cWidth > specWidthSize){
+            if (lineWidth + cWidth > specWidthSize) {
                 width = Math.max(lineWidth, cWidth);// 取最大值
                 lineWidth = cWidth; // 开启新行的时候重新累加width
                 height += lineHeight; // 开启新行时累加 height
@@ -151,7 +148,7 @@ public class FlowGroupView extends ViewGroup {
                 // 换行的时候把该 view 放进 集合里
                 lineViews.add(child);// 这个  view(child) 是下一行的第一个view
                 Log.v(TAG, "onl  mAllViews.size()  --  > " + mAllViews.size());
-            }else {
+            } else {
                 // 不需要换行
                 lineWidth += cWidth;//
                 height = Math.max(lineHeight, cheight);// 取最大值
@@ -159,7 +156,7 @@ public class FlowGroupView extends ViewGroup {
                 lineViews.add(child);
             }
 
-            if(i == cCount - 1){
+            if (i == cCount - 1) {
                 // 如果是最后一个view
                 width = Math.max(lineWidth, cWidth);
                 height += lineHeight;
@@ -172,7 +169,7 @@ public class FlowGroupView extends ViewGroup {
         // 如果 mode 是 MeasureSpec.EXACTLY 时候，则不是 warp_content 用计算来的值，否则则用上级布局分给它的值
         setMeasuredDimension(specWidthMode == MeasureSpec.EXACTLY ? specWidthSize : width
                 , specHeighMode == MeasureSpec.EXACTLY ? specHeighSize : height);
-        Log.v(TAG, "onLayout  onMeasure   mAllViews.size() -- > " + mAllViews.size() + "   mLineHeight.size() -- > "+ mLineHeight.size());
+        Log.v(TAG, "onLayout  onMeasure   mAllViews.size() -- > " + mAllViews.size() + "   mLineHeight.size() -- > " + mLineHeight.size());
     }
 
     /**
@@ -182,7 +179,7 @@ public class FlowGroupView extends ViewGroup {
     @Override
     public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {
 
-        return new MarginLayoutParams(getContext(),attrs);
+        return new MarginLayoutParams(getContext(), attrs);
     }
 
 }
